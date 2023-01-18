@@ -1,27 +1,30 @@
 # Sonus-Discord-Bot
 
-__VERSION 1.0__
+__VERSION 1.1__
 
-Sonus Bot is a bot that I've developed through the Python Programming language, it's developed for being implemented on a Discord server with simple to understand commands and easy source code structure and syntax.
-As the first version of this bot, it currently has various bugs which will be improved in the near future.
+Sonus Bot is a bot that plays music from YouTube URLs and YouTube search on Discord, it's written in Python and mainly uses the discord.py API wrapper to send music to the voice channel through the use of the VoiceProtocol, with the coming of the V1.1 there has been an addition of a vast amount of bug fixing, feature implementing, optimization, comment writing and the addition of a newly made GUI that can be used to start and stop the bot with ease.
 
 Dependencies:
 
 - Python Interpreter
-- FFMPEG
-- youtube_dl
-- Discord API
+- ffmpeg
+- yt-dlp
+- discord.py
+- YouTube API Token
+- dotenv
+- tkinter
 
 Features/Commands:
 
-- Playing music from YouTube URLs
+- Playing music from YouTube URLs and YouTube search
 - Pause command to pause music
 - Resume command to resume paused music
 - Stop command to stop music
 - Ping command to output latency stats
+- GUI to start/stop the bot
 
-Known Bugs (To be fixed):
+Known Bugs and issues (To be fixed):
 
-- Already connected to voice_channel: when playing a song after the first song has finished, this error is output on the terminal.
-- OSError: [Errno 9] Bad file descriptor: error output when the file is tried to be accessed on certain occasions.
-- discord.ext.commands.errors.CommandInvokeError: Command raised an exception: TypeError: object NoneType can't be used in 'await' expression: this error is output on the terminal when the music is paused, resumed or stopped.
+- Issue with the YouTube library yt-dlp running a synchronous function 'play()' within an asynchronous event loop, this causes the bot to crash when a song with a long duration is played as it causes the bot's heartbeat to stop. This is a known issue with the library and is being worked on.
+- After YouTube API search returns 5 results, there should be a way to cancel the search and return to previous state.
+- Randomly there is a file error that is hard to reproduce, it involves the song file with the error being that it already exists when it had been previously deleted (I suspect file naming might be at blame but I need to run more tests for more conclusive evidence).
